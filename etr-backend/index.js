@@ -11,9 +11,9 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Root route for testing
+// Base route for health check
 app.get('/', (req, res) => {
-  res.send('API is running...');
+  res.status(200).json({ message: 'API is running...' });
 });
 
 // Routes
