@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -11,28 +11,51 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Theme Colors */
+  --primary-color: #646cff; /* Default accent color */
+  --primary-hover-color: #535bf2;
+  --background-color-dark: #242424;
+  --background-color-light: #ffffff;
+  --card-background-light: #f9f9f9;
+  --card-background-dark: #1a1a1a;
+  --text-color-dark: rgba(255, 255, 255, 0.87);
+  --text-color-light: #213547;
+  --progress-background: rgba(255, 255, 255, 0.2);
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--primary-color);
   text-decoration: inherit;
+  transition: color 0.3s ease;
 }
+
 a:hover {
-  color: #535bf2;
+  color: var(--primary-hover-color);
 }
 
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  margin-bottom: 0.5em;
+  color: var(--primary-color);
+}
+
+h3, h4, h5 {
+  color: var(--primary-hover-color);
 }
 
 button {
@@ -42,27 +65,90 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--card-background-dark);
+  color: var(--text-color-dark);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background-color 0.3s, border-color 0.25s;
 }
+
 button:hover {
-  border-color: #646cff;
+  border-color: var(--primary-color);
+  background-color: var(--primary-hover-color);
+  color: white;
 }
+
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 4px auto var(--primary-hover-color);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.8em;
+  border: 1px solid var(--primary-color);
+  border-radius: 8px;
+  font-size: 1em;
+  background-color: var(--card-background-dark);
+  color: var(--text-color-dark);
+  transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary-hover-color);
+  outline: none;
+}
+
+.card {
+  background-color: var(--card-background-dark);
+  border-radius: 16px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 1.5em;
+  margin: 1em 0;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: var(--progress-background);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar > div {
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 16px;
+  transition: width 0.3s ease;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--text-color-light);
+    background-color: var(--background-color-light);
   }
-  a:hover {
-    color: #747bff;
+
+  body {
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
   }
+
+  .card {
+    background-color: var(--card-background-light);
+  }
+
+  input, textarea {
+    background-color: var(--card-background-light);
+    color: var(--text-color-light);
+  }
+
   button {
-    background-color: #f9f9f9;
+    background-color: var(--card-background-light);
+    color: var(--text-color-light);
   }
 }
